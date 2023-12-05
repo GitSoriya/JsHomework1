@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise2</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0px;
+    }
+    form{
+        border: 1px solid black;
+        width: 400px;
+        padding: 40px;
+        border-radius: 5px;
+        margin: 20px auto;
+    }
+    table{
+        margin: auto;
+        border-spacing: 25px;
+    }
+    input{
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 10px;  
+    }
+    input[type="button"]:hover{
+        box-shadow: 3px 3px 3px rgb(146, 146, 244);
+        background-color: rgb(100, 100, 249);
+        color: whitesmoke;
+    }
+    td p{
+        color: red;
+        font-size: 15px;
+    }
+    /* Responsive */
+    @media (min-width: 768px) and (max-width: 991.98px){
+        form{
+            width: 500px;
+        }
+        table{
+            border-spacing: 20px 40px;
+        }
+        td label, input{
+            font-size: 20px;
+        }
+    }
+    @media (min-width: 576px) and (max-width:767.98px){
+        table{
+            border-spacing: 10px 35px;
+        }
+        td label, input{
+            font-size: 16px;
+        }
+    }
+    @media (max-width: 575.98px){
+        form{
+            margin: 10px auto;
+        }
+        table{
+        margin: auto;
+        border-spacing: 10px 30px;
+        }
+        td label, input{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    }
+</style>
+<body>
+    <form action="">
+        <table border="0px">
+            <tr>
+                <td><label for="">1st number:</label></td>
+                <td><input type="text" id="Inputnum1" placeholder="Please input number1"></td>
+            </tr>
+            <tr>
+                <td><label for="">2st number:</label></td>
+                <td><input type="text" id="Inputnum2" placeholder="Please input number2"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Plus" onclick="funPlus()">
+                    <input type="button" value="Subtract" onclick="funSub()">
+                </td>
+                <td>
+                    <input type="button" value="Multiply" onclick="funMult()">
+                    <input type="button" value="Divide" onclick="funDivide()">
+                </td>
+            </tr>
+            <tr>
+                <td><p>The result plus is: </p></td>
+                <td><p id="p"></p></td>
+            </tr>
+        </table>        
+    </form>
+</body>
+</html>
+<script>
+    function funPlus(){
+        var value= getValues();
+        var plus = value.num1 + value.num2;
+        document.getElementById("p").innerHTML= plus;
+    }
+    function funSub(){
+        var value= getValues();
+        var subtract = value.num1 - value.num2;
+        document.getElementById("p").innerHTML= subtract;
+    }
+    function funMult(){
+        var value= getValues();
+        var multiply = value.num1 * value.num2;
+        document.getElementById("p").innerHTML= multiply;
+    }
+    function funDivide(){
+        var value= getValues();
+        var divide = value.num1 / value.num2;
+        document.getElementById("p").innerHTML= divide;
+    }
+
+    // function ===========================================
+    function getValues(){
+        var num1 = document.getElementById("Inputnum1").value;
+        var num2 = document.getElementById("Inputnum2").value;
+        num1 = parseInt(num1, 10);  // convert to Integer in គោល 10
+        num2 = parseInt(num2, 10);
+        if(isNaN(num1)|| isNaN(num2)){
+            alert("Please input number before click button.");
+        }
+        else{
+            return{num1, num2};  //parameters num1 and num2 are dynamic value.
+        }
+    }
+    // function DisResult(result){
+    //     document.getElementById("p").innerHTML= result;
+    //     // result = in function plus -> DisResult(plus);
+    // }
+</script>
